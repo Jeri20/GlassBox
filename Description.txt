@@ -1,0 +1,179 @@
+Project in One Line
+
+👉 “I built a customer churn prediction system and compared two types of explanations: one that explains after prediction (SHAP) and one that is inherently explainable (EBM), across accuracy, speed, reliability, and trust.”
+
+🧩 What You Actually Did (Step-by-Step Simple Explanation)
+🔹 1. Took Raw Business Data
+You used the UCI Online Retail II dataset
+It contains:
+Customer purchases
+Dates, products, prices
+❗ Problem: It has no churn label
+
+👉 So you created churn manually
+
+🔹 2. Created Churn Label (Very Important Part ⭐)
+
+You defined:
+
+If a customer has not purchased in 90 days → Churned
+Else → Not churned
+
+👉 This is called churn engineering
+
+You also created important features:
+
+Recency → last purchase gap
+Frequency → how often they buy
+Monetary → how much they spend
+Plus others like:
+Avg order value
+Cancellation rate
+Tenure
+
+👉 These are called RFM features
+
+🔹 3. Explored the Data (EDA)
+
+You:
+
+Checked distributions
+Compared churn vs non-churn customers
+Found patterns like:
+High recency → more churn
+Low frequency → more churn
+
+👉 This helps justify your model design
+
+🔹 4. Prepared Data for ML
+
+You:
+
+Normalized numeric data
+Encoded categorical data (country)
+Split into:
+Train (80%)
+Test (20%)
+
+👉 Also handled imbalance using SMOTE
+(because churn cases are fewer)
+
+🔹 5. Built TWO Models (Core Idea 🔥)
+🧱 Model 1: LightGBM + SHAP
+High accuracy model
+But not interpretable by default
+So you used SHAP to explain predictions
+
+👉 This is called:
+Post-hoc explanation (after prediction)
+
+🧱 Model 2: EBM (Explainable Boosting Machine)
+Built to be interpretable by design
+Gives:
+Feature contributions directly
+
+👉 This is called:
+Glass-box model (intrinsic explanation)
+
+⚔️ 6. Compared Them on 4 Metrics (MAIN CONTRIBUTION)
+📊 1. Predictive Performance
+
+You checked:
+
+Accuracy
+F1 score
+AUC
+etc.
+
+👉 Goal: Which model predicts better?
+
+⚡ 2. Explanation Latency (VERY IMPORTANT ⭐)
+
+You measured:
+
+How fast explanations are generated
+
+Result idea:
+
+SHAP → slow
+EBM → fast
+
+👉 This is your main technical contribution
+
+🎯 3. Explanation Fidelity
+
+👉 Meaning: How truthful is the explanation?
+
+EBM = 100% (because model itself is explanation)
+SHAP = Approximation
+
+👉 So EBM wins here
+
+🔁 4. Explanation Stability
+
+👉 Meaning: If you run explanation multiple times, is it consistent?
+
+You tested:
+
+Feature ranking consistency
+Value variation
+Sign consistency
+
+👉 Stable models are more trustworthy
+
+📈 7. Final Result
+
+You created:
+
+Comparison tables
+Graphs
+Statistical test (McNemar)
+
+👉 Then concluded:
+
+✅ EBM:
+
+Faster
+More reliable
+Fully explainable
+
+⚖️ LightGBM:
+
+Slightly better accuracy (sometimes)
+But slower and less trustworthy
+👤 8. Real Customer Case Study
+
+You showed:
+
+A churner
+A non-churner
+A disagreement case
+
+👉 Compared explanations from both models
+
+📄 9. Final Conclusion (How You Say It in Viva)
+
+👉 You can say:
+
+“Traditional models like LightGBM require external tools like SHAP to explain predictions, which are slower and approximate.
+My proposed EBM model provides built-in explanations that are faster, perfectly faithful, and more stable, making it more suitable for real-world decision systems like customer retention.”
+
+🏗️ Architecture (Explain Like This)
+Data → Feature Engineering → ML Models → Explanations → Comparison
+
+Or slightly better:
+
+Raw Data
+   ↓
+RFM Features + Churn Label
+   ↓
+Preprocessing + SMOTE
+   ↓
+Two Models:
+   → LightGBM + SHAP
+   → EBM
+   ↓
+Compare:
+   Accuracy | Speed | Fidelity | Stability
+   ↓
+Final Decision
