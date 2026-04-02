@@ -114,7 +114,3 @@ Open `GlassBox.ipynb` and run all cells.
 19. Comparing Permutation Importance vs. SHAP (2022)  
 20. Human-in-the-loop: Validating XAI Results with Domain Experts (2026)
 
-## Suggested Next Steps
-1. Add a `requirements.txt` or `pyproject.toml` for reproducibility.  
-2. Expand the TabTransformer attention analysis to quantify feature interaction stability over time.  
-3. Evaluate drift-aware explainers using rolling windows or temporal splits.
